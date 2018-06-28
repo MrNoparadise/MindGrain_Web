@@ -1,18 +1,57 @@
+@font-face {
+font-family: 'lakeshore';
+src: url('fonts/LAKESHOR-webfont.eot');
+src: url('fonts/LAKESHOR-webfont.eot?#iefix') format('embedded-opentype'),
+url('fonts/LAKESHOR-webfont.woff') format('woff'),
+url('fonts/LAKESHOR-webfont.ttf') format('truetype'),
+url('fonts/LAKESHOR-webfont.svg#lakeshore') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+font-family: 'airstreamregular';
+src: url('fonts/Airstream-webfont.eot');
+src: url('fonts/Airstream-webfont.eot?#iefix')
+format('embedded-opentype'),
+url('fonts/Airstream-webfont.woff') format('woff'),
+url('fonts/Airstream-webfont.ttf') format('truetype'),
+url('fonts/Airstream-webfont.svg#airstreamregular') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+html, body {
+  height: 100%;
+}
 body {
+  display: flex;
+  flex-direction: column;
   font-size: 10px;
-  background: rgb(149, 194, 215);
+  background: rgb(189, 174, 255);
 }
 
 a {
   text-decoration: none;
 }
 
+.main-header {
+  flex: 0 1 auto;
+}
+
+.main-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
 .logo-text {
-  background: white;
+  background: rgb(161,247,255);
+  background: rgba(161,247,255,0.7);
 
   text-align: center;
   text-transform: uppercase;
   font-size: 37px;
+  font-family: lakeshore;
+  color: rgb(255, 149, 150);
 }
 
 .thumbnail-title {
@@ -32,14 +71,62 @@ a {
 .thumbnail-item {
   border: 1px solid rgb(100%, 100%, 100%);
   border: 1px solid rgba(100%, 100%, 100%, 0.8);
-  display: block;
+  min-width: 120px;
+  max-width: 120px;
+  display: inline-block;
 }
 
-.thumbnail-item+.thumbnail-item {
-  margin-top: 10px;
-}
 
 .thumbnail-list {
+  display: flex;
   list-style: none;
   padding: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+  flex: 0 1 auto;
+  order: 2;
+  justify-content: space-between;
+}
+
+.detail-image {
+  width: 90%;
+}
+.detail-image-container {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.detail-image-frame {
+text-align: center;
+position: relative;
+}
+.detail-image-title {
+  position: absolute;
+  bottom: -16px;
+  left: 4px;
+
+  color: white;
+  font-size: 40px;
+  text-shadow: rgba(0,0,0,0.9) 1px 2px 9px;
+  font-family: airstreamregular;
+}
+
+@media all and (min-width: 768px) {
+  .main-content {
+    flex-direction: row;
+overflow: hidden;
+}
+.thumbnail-list {
+flex-direction: column;
+order: 0;
+margin-left: 20px;
+}
+.thumbnail-item {
+max-width: 260px;
+}
+.thumbnail-item + .thumbnail-item {
+margin-top: 20px;
+}
+
 }
